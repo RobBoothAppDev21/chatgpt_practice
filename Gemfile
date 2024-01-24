@@ -7,6 +7,7 @@ gem "bootsnap", require: false # Reduces boot times through caching; required in
 gem "devise", "~> 4.9" # Authentication [https://github.com/heartcombo/devise]
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "omniauth"
 gem "pg", "~> 1.1" # Use postgresql as the database for Active Record
 gem "puma", ">= 5.0" # Use the Puma web server [https://github.com/puma/puma]
 gem "sprockets-rails" # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -32,6 +33,7 @@ group :development do
   gem "annotate" # Summarize current schema [https://github.com/ctran/annotate_models]
   gem "better_errors"
   gem "bullet" # Identify and optimize unneccessary database quieries [https://github.com/flyerhzm/bullet]
+  gem "letter_opener"
   gem "rubocop", require: false # Enforcing consistent coding styles - linter [https://github.com/rubocop/rubocop]
   gem "rubocop-performance" # Performance Monitoring
   gem "rubocop-rails" # Rails Style Monitoring
