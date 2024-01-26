@@ -4,7 +4,6 @@ ruby "3.3.0"
 
 
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
-gem "devise", "~> 4.9" # Authentication [https://github.com/heartcombo/devise]
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth"
