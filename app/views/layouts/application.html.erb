@@ -12,9 +12,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-4 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <main class="container mx-auto mt-4 px-5">
+      <%= render partial: "shared/navbar" %>
+      <%= render partial: "shared/flash" %>
       <%= yield %>
     </main>
   </body>
