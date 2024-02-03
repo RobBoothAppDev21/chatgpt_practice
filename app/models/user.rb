@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_secure_token :remember_token
 
   has_many :active_sessions, dependent: :destroy
 

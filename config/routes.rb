@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "login", to: "sessions#destroy"
 
-  patch "/account", to: "users#update"
-  get "/account", to: "users#edit"
-  delete "/account", to: "users#destroy"
+  resource :users, only: [:update, :edit, :destroy], path: "account", as: "account"
 
-  get "/profile", to: "profiles#show"
+  get "/profile", to: "users#show"
 
   resources :confirmations, only: [:new, :create, :edit], param: :confirmation_token
 
@@ -20,17 +18,9 @@ Rails.application.routes.draw do
 
   resource :password, only: [:edit, :update]
 
-  resources :active_sessions, only: [:destroy] do
-    collection do
-      delete "destoy_all"
-    end
-  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

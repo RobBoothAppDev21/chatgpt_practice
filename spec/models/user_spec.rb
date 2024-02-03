@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
     it "should encrypt the password" do
       user = create(:user, password: "test_password", password_confirmation: "test_password")
 
-      user.should respond_to(:password_digest)
+      expect(user).to respond_to(:password_digest)
     end
 
     it "should authenticate the user" do
@@ -24,6 +24,12 @@ RSpec.describe User, type: :model do
       user = create(:user)
 
       expect(user.unconfirmed?).to be
+    end
+
+    it "should have a remember token" do
+      user = create(:user)
+
+      expect(user.remember_token).to be
     end
 
     it "should not have an unconfirmed email" do
