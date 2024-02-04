@@ -5,6 +5,7 @@ ruby "3.3.0"
 
 gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
+gem "font-awesome-sass", "~> 6.5.1"
 gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "jbuilder" # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "omniauth"

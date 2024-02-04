@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :user do
-    email { "MyString" }
-    password_digest { "MyString" }
-    confirmed_at { "2024-01-26 10:51:32" }
-    unconfirmed_email { "MyString" }
+    email { "test_user@gmail.com" }
+    password { "password"}
+    password_confirmation { "password" }
+    confirmed_at { nil }
+    unconfirmed_email { nil }
   end
 end

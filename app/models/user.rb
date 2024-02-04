@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_secure_token :remember_token
 
   has_many :active_sessions, dependent: :destroy
 
@@ -13,7 +14,7 @@ class User < ApplicationRecord
   normalizes :unconfirmed_email, with: ->(unconfirmed_email) do
     return if unconfirmed_email.nil?
 
-    unconfirmed_email.downcase
+    unconfirmed_email.downcase.strip
   end
 
   generates_token_for :confirm_email, expires_in: 3.hours do
