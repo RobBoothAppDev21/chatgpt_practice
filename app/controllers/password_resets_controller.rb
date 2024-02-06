@@ -4,7 +4,7 @@ class PasswordResetsController < ApplicationController
   before_action :redirect_if_authenticated
 
   def create
-    @user = User.find_by(email: params[:user][:email].downcase)
+    @user = User.find_by(email: params[:user][:email])
     if @user.present?
       if @user.confirmed?
         @user.send_password_reset_email!
@@ -22,7 +22,7 @@ class PasswordResetsController < ApplicationController
     if @user.present? && @user.unconfirmed?
       redirect_to new_confirmation_path, alert: "You must confirm your email first."
     elsif @user.nil?
-      redirect_to new_password_path, alert: "Invalid or expired token."
+      redirect_to new_password_resets_path, alert: "Invalid or expired token."
     end
   end
 
@@ -34,13 +34,16 @@ class PasswordResetsController < ApplicationController
       elsif @user.update(password_reset_params)
         redirect_to login_path, notice: "Sign in."
       else
-        flash.now[:alert] = @user.errors.full_message.to_sentence
+        flash.now[:alert] = @user.errors.full_messages.to_sentence
         render :edit, status: :unprocessable_entity
       end
     else
       flash.now[:alert] = "Invalid or expired token."
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def new
   end
 
   private
