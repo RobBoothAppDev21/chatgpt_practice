@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :redirect_if_authenticated, only: [:new, :create]
   before_action :authenticate_user!, only: [:show]
 
   def new
@@ -42,6 +43,6 @@ class UsersController < ApplicationController
   def update_user_params
     params.require(:user)
           .permit(:unconfirmed_email, :password_challenge)
-          .with_defaults(password_challenge: "")
+          .with_defaults(password_challenge: "", confirmed_at: nil)
   end
 end

@@ -78,5 +78,24 @@ RSpec.describe User, type: :model do
 
       expect(user.unconfirmed_email).to eq("unconfirmed_test@gmail.com")
     end
+
+    it "returns true for confirmed_at?" do
+      time = Time.zone.now
+      user = create(:user, confirmed_at: time)
+
+      expect(user.confirmed?).to be
+    end
+  end
+
+  it "sends a confirmation email" do
+    user = create(:user)
+    expect { user.send_confirmation_email! }
+      .to have_enqueued_job(ActionMailer::MailDeliveryJob).exactly(:once)
+  end
+
+  it "sends a password reset email" do
+    user = create(:user)
+    expect { user.send_password_reset_email! }
+      .to have_enqueued_job(ActionMailer::MailDeliveryJob).exactly(:once)
   end
 end
