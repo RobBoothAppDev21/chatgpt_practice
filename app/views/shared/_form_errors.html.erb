@@ -1,0 +1,8 @@
+<!-- app/views/shared/_form_errors.html.erb -->
+<% if object.errors.any? %>
+  <ul class="mb-2 text-red-600 rounded-md" id="error-messages">
+    <% object.errors.full_messages.each do |message| %>
+      <li class="text-sm"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
