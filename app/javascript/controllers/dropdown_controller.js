@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["menu", "button"]
   
   toggle() {
-    console.log(this)
     toggle(this.menuTarget)
   }
 
